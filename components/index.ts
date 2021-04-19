@@ -1,8 +1,10 @@
 import { App } from 'vue';
 import { default as Button } from './button';
+import { default as Icon } from './icon';
 
 const components = [
-  Button
+  Button,
+  Icon
 ];
 
 const install = function(app: App) {
@@ -18,6 +20,7 @@ const install = function(app: App) {
 export {
   install,
   Button,
+  Icon
 };
 
 export default {

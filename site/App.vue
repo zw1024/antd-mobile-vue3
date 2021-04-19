@@ -1,18 +1,13 @@
 <template>
-<!--  <Button>aaa</Button>-->
   <router-view></router-view>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import Button from '../components/button'
 import '../components/button/style'
 
 export default defineComponent({
-  name: 'App',
-  components: {
-    Button
-  }
+  name: 'App'
 })
 </script>
 

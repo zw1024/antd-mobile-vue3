@@ -12,23 +12,8 @@
     import { computed, defineComponent } from 'vue'
     import { PropType } from 'vue'
     import feedback from '../feedback/index'
-    type IButtonType = PropType<'primary' | 'success' | 'warning' | 'danger' | 'info' | 'text' | 'default'>
-    type IButtonNativeType = PropType<'button' | 'submit' | 'reset'>
-    type IButtonSize = 'large' | 'normal' | 'small' | 'mini';
-
-    interface IButtonProps {
-        type: string
-        size: string
-        icon: string
-        nativeType: string
-        loading: boolean
-        disabled: boolean
-        plain: boolean
-        autofocus: boolean
-        round: boolean
-        circle: boolean
-    }
-
+    type IButtonType = PropType<'primary' | 'ghost' | 'warning'>
+    type IButtonSize = 'large' | 'small'
 
     export default defineComponent({
         name: 'Button',
@@ -42,55 +27,40 @@
                 default: 'primary',
                 validator: (val: string) => {
                     return [
-                        'default',
                         'primary',
-                        'success',
-                        'warning',
-                        'info',
-                        'danger',
-                        'text',
+                        'ghost',
+                        'warning'
                     ].includes(val)
                 },
             },
             size: {
                 type: String as IButtonSize,
-                default: 'button',
+                default: 'large',
                 validator: (val: string) => {
-                    return ['button', 'submit', 'reset'].includes(val)
-                },
+                    return ['large', 'small'].includes(val)
+                }
             },
             icon: {
                 type: String,
                 default: '',
             },
-            nativeType: {
-                type: String as IButtonNativeType,
-                default: 'button',
-                validator: (val: string) => {
-                    return ['button', 'submit', 'reset'].includes(val)
-                },
-            },
             loading: Boolean,
-            disabled: Boolean,
-            plain: Boolean,
-            autofocus: Boolean,
-            round: Boolean,
-            circle: Boolean,
+            inline: Boolean,
+            disabled: Boolean
         },
         emits: ['click'],
         directives: { feedback: feedback },
         setup(props, ctx) {
-
             const buttonSize = computed(() => {
                 return props.size
             })
             const buttonDisabled = computed(() => {
                 return props.disabled
             })
-            const classes = useClasses({
+            const classes = classnames({
                 props,
-                size: buttonSize,
-                disabled: buttonDisabled
+                size: props.size,
+                disabled: props.disabled
             })
             const activeClass =  computed (() =>{
                 return props.activeClassName || (props.activeStyle !== false ? `${props.prefixCls}-active` : undefined)
@@ -109,10 +79,10 @@
             }
         }
     })
-    const useClasses = ({ props, size, disabled }) => {
+    const classnames = ({ props, size, disabled }) => {
         return computed(() => {
             return {
-                'am-button': true,
+                [`${props.prefixCls}`]: true,
                 [`${props.prefixCls}-primary`]: props.type === 'primary',
                 [`${props.prefixCls}-ghost`]: props.type === 'ghost',
                 [`${props.prefixCls}-warning`]: props.type === 'warning',

@@ -1,7 +1,5 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 
-const Home = { template: '<div>Home</div>' }
-const About = { template: '<div>About</div>' }
 
 export const routes: Array<RouteRecordRaw> = [
   {
@@ -13,9 +11,9 @@ export const routes: Array<RouteRecordRaw> = [
       title: '首页'
     },
     children: [
-      { path: 'nav',  component: () => import('../components/nav.vue') },
+      { path: 'nav',  component: () => import('../components/NavLink.vue') },
       { path: 'button',  component: () => import('../../components/button/demo/index.vue') },
-      { path: 'about', component: About }
+      { path: 'icon',  component: () => import('../../components/icon/demo/index.vue') }
     ]
   }
 ]

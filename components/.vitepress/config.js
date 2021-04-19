@@ -5,7 +5,8 @@ module.exports = {
   themeConfig: {
     search: true,
     sidebar: [
-      { text: 'Buttom', link: '/button/README' }
+      { text: 'Buttom', link: '/button/README' },
+      { text: 'Icon', link: '/Icon/README' }
     ]
   }
 }

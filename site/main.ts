@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+import  '../components/style'
 import AntdMobileVue3 from '../components/index'
 import router from './router/index'
 
