@@ -1,0 +1,16 @@
+[
+  {
+    "name": "组件",
+    "groups": [
+      {
+        "groupName": "Basic",
+        "list": [
+          {
+            "path": "/button",
+            "title": "Button 按钮"
+          }
+        ]
+      }
+    ]
+  }
+]
