@@ -4,6 +4,7 @@
             :class="classes"
             v-feedback="{'activeClass': activeClass,'disabled':disabled}"
             @click="handleClick">
+        <icon :class=iconClass aria-hidden="true" v-if="icon || loading" :type="loading ? 'loading':icon" :size="size === 'small' ? 'xxs' : 'md'" ></icon>
         <span><slot></slot></span>
     </a>
 </template>
@@ -57,6 +58,11 @@
             const buttonDisabled = computed(() => {
                 return props.disabled
             })
+            const iconClass = computed(() => {
+                return [
+                    `${props.prefixCls}-${'icon'}`
+                ]
+            })
             const classes = classnames({
                 props,
                 size: props.size,
@@ -74,6 +80,7 @@
                 buttonSize,
                 buttonDisabled,
                 classes,
+                iconClass,
                 activeClass,
                 handleClick,
             }
@@ -89,7 +96,8 @@
                 [`${props.prefixCls}-small`]: props.size === 'small',
                 [`${props.prefixCls}-inline`]: props.inline,
                 [`${props.prefixCls}-disabled`]: props.disabled,
-                [`${props.prefixCls}-loading`]: props.loading
+                [`${props.prefixCls}-loading`]: props.loading,
+                [`${props.prefixCls}-icon`]: props.icon || props.loading
             }
         })
     }
