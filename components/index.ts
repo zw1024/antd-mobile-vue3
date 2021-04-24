@@ -1,10 +1,13 @@
 import { App } from 'vue';
 import { default as Button } from './button';
 import { default as Icon } from './icon';
+import { Flex, FlexItem } from './flex';
 
 const components = [
   Button,
-  Icon
+  Icon,
+  Flex,
+  FlexItem
 ];
 
 const install = function(app: App) {
@@ -20,7 +23,8 @@ const install = function(app: App) {
 export {
   install,
   Button,
-  Icon
+  Icon,
+  Flex
 };
 
 export default {

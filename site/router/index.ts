@@ -1,6 +1,5 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 
-
 export const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -13,7 +12,9 @@ export const routes: Array<RouteRecordRaw> = [
     children: [
       { path: 'nav',  component: () => import('../components/NavLink.vue') },
       { path: 'button',  component: () => import('../../components/button/demo/index.vue') },
-      { path: 'icon',  component: () => import('../../components/icon/demo/index.vue') }
+      { path: 'icon',  component: () => import('../../components/icon/demo/index.vue') },
+      { path: 'flex',  component: () => import('../../components/flex/demo/index.vue') }
+
     ]
   }
 ]

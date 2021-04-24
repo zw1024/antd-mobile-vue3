@@ -6,7 +6,8 @@ module.exports = {
     search: true,
     sidebar: [
       { text: 'Buttom', link: '/button/README' },
-      { text: 'Icon', link: '/Icon/README' }
+      { text: 'Icon', link: '/Icon/README' },
+      { text: 'Flex', link: '/Flex/README' }
     ]
   }
 }

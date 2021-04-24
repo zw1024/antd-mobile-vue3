@@ -87,18 +87,16 @@
         }
     })
     const classnames = ({ props, size, disabled }) => {
-        return computed(() => {
-            return {
-                [`${props.prefixCls}`]: true,
-                [`${props.prefixCls}-primary`]: props.type === 'primary',
-                [`${props.prefixCls}-ghost`]: props.type === 'ghost',
-                [`${props.prefixCls}-warning`]: props.type === 'warning',
-                [`${props.prefixCls}-small`]: props.size === 'small',
-                [`${props.prefixCls}-inline`]: props.inline,
-                [`${props.prefixCls}-disabled`]: props.disabled,
-                [`${props.prefixCls}-loading`]: props.loading,
-                [`${props.prefixCls}-icon`]: props.icon || props.loading
-            }
-        })
+        return {
+            [`${props.prefixCls}`]: true,
+            [`${props.prefixCls}-primary`]: props.type === 'primary',
+            [`${props.prefixCls}-ghost`]: props.type === 'ghost',
+            [`${props.prefixCls}-warning`]: props.type === 'warning',
+            [`${props.prefixCls}-small`]: props.size === 'small',
+            [`${props.prefixCls}-inline`]: props.inline,
+            [`${props.prefixCls}-disabled`]: props.disabled,
+            [`${props.prefixCls}-loading`]: props.loading,
+            [`${props.prefixCls}-icon`]: props.icon || props.loading
+        }
     }
 </script>
