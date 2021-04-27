@@ -7,7 +7,10 @@ module.exports = {
     sidebar: [
       { text: 'Buttom', link: '/button/README' },
       { text: 'Icon', link: '/Icon/README' },
-      { text: 'Flex', link: '/Flex/README' }
+      { text: 'Flex', link: '/Flex/README' },
+      { text: 'WingBlank', link: '/wingblank/README' },
+      { text: 'WhiteSpace', link: '/whitespace/README' }
+
     ]
   }
 }

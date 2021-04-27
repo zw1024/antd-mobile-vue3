@@ -15,7 +15,6 @@
     import feedback from '../feedback/index'
     type IButtonType = PropType<'primary' | 'ghost' | 'warning'>
     type IButtonSize = 'large' | 'small'
-
     export default defineComponent({
         name: 'Button',
         props: {
@@ -52,24 +51,15 @@
         emits: ['click'],
         directives: { feedback: feedback },
         setup(props, ctx) {
-            const buttonSize = computed(() => {
-                return props.size
-            })
-            const buttonDisabled = computed(() => {
-                return props.disabled
-            })
+            const {prefixCls, activeClassName, activeStyle} = (props)
             const iconClass = computed(() => {
                 return [
-                    `${props.prefixCls}-${'icon'}`
+                    `${prefixCls}-${'icon'}`
                 ]
             })
-            const classes = classnames({
-                props,
-                size: props.size,
-                disabled: props.disabled
-            })
+            const classes = classnames({props})
             const activeClass =  computed (() =>{
-                return props.activeClassName || (props.activeStyle !== false ? `${props.prefixCls}-active` : undefined)
+                return activeClassName || (activeStyle !== false ? `${prefixCls}-active` : undefined)
             })
             //methods
             const handleClick = evt => {
@@ -77,8 +67,6 @@
             }
 
             return {
-                buttonSize,
-                buttonDisabled,
                 classes,
                 iconClass,
                 activeClass,
@@ -86,7 +74,7 @@
             }
         }
     })
-    const classnames = ({ props, size, disabled }) => {
+    const classnames = ({ props }) => {
         return {
             [`${props.prefixCls}`]: true,
             [`${props.prefixCls}-primary`]: props.type === 'primary',

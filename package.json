@@ -9,20 +9,19 @@
     "docs:build": "vitepress build components",
     "docs:serve": "vitepress serve components"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
-    "@vitejs/plugin-vue": "^1.2.1",
+    "@vitejs/plugin-vue": "^1.2.2",
     "@vue/compiler-sfc": "^3.0.5",
     "eslint": "^7.24.0",
     "less": "^4.1.1",
     "less-loader": "^8.0.0",
     "normalize.css": "^8.0.1",
     "typescript": "^4.1.3",
-    "vite": "^2.1.5",
+    "vite": "^2.2.2",
     "vitepress": "^0.13.0",
     "vue": "^3.0.5",
-    "vue- router": "^4.0.6",
+    "vue-router": "^4.0.6",
     "vue-tsc": "^0.0.15"
   }
 }

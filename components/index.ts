@@ -2,12 +2,16 @@ import { App } from 'vue';
 import { default as Button } from './button';
 import { default as Icon } from './icon';
 import { Flex, FlexItem } from './flex';
+import { default as WingBlank } from './wingblank';
+import { default as WhiteSpace } from './whitespace';
 
 const components = [
   Button,
   Icon,
   Flex,
-  FlexItem
+  FlexItem,
+  WingBlank,
+  WhiteSpace
 ];
 
 const install = function(app: App) {
@@ -24,7 +28,10 @@ export {
   install,
   Button,
   Icon,
-  Flex
+  Flex,
+  FlexItem,
+  WingBlank,
+  WhiteSpace
 };
 
 export default {
