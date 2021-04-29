@@ -1,0 +1,13 @@
+node_modules
+*.png
+*.jpg
+*.jpeg
+*.svg
+*.css
+*.scss
+*.woff
+*.ttf
+*.eot
+*.md
+*.snap
+dist

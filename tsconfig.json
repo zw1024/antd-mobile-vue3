@@ -16,5 +16,8 @@
     "site/**/*.d.ts",
     "site/**/*.tsx",
     "site/**/*.vue"
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }

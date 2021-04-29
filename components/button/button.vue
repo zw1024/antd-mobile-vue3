@@ -1,90 +1,81 @@
 <template>
-    <a
-            :type="type"
-            :class="classes"
-            v-feedback="{'activeClass': activeClass,'disabled':disabled}"
-            @click="handleClick">
-        <icon :class=iconClass aria-hidden="true" v-if="icon || loading" :type="loading ? 'loading':icon" :size="size === 'small' ? 'xxs' : 'md'" ></icon>
-        <span><slot></slot></span>
-    </a>
+  <a :type="type" :class="classes" v-feedback="{ activeClass: activeClass, disabled: disabled }" @click="handleClick">
+    <icon :class="iconClass" aria-hidden="true" v-if="icon || loading" :type="loading ? 'loading' : icon" :size="size === 'small' ? 'xxs' : 'md'"></icon>
+    <span><slot></slot></span>
+  </a>
 </template>
 
-<script lang='ts'>
-    import { computed, defineComponent } from 'vue'
-    import { PropType } from 'vue'
-    import feedback from '../feedback/index'
-    type IButtonType = PropType<'primary' | 'ghost' | 'warning'>
-    type IButtonSize = 'large' | 'small'
-    export default defineComponent({
-        name: 'Button',
-        props: {
-            prefixCls: {
-                type: String,
-                default: 'am-button'
-            },
-            type: {
-                type: String as IButtonType,
-                default: 'primary',
-                validator: (val: string) => {
-                    return [
-                        'primary',
-                        'ghost',
-                        'warning'
-                    ].includes(val)
-                },
-            },
-            size: {
-                type: String as IButtonSize,
-                default: 'large',
-                validator: (val: string) => {
-                    return ['large', 'small'].includes(val)
-                }
-            },
-            icon: {
-                type: String,
-                default: '',
-            },
-            loading: Boolean,
-            inline: Boolean,
-            disabled: Boolean
-        },
-        emits: ['click'],
-        directives: { feedback: feedback },
-        setup(props, ctx) {
-            const {prefixCls, activeClassName, activeStyle} = (props)
-            const iconClass = computed(() => {
-                return [
-                    `${prefixCls}-${'icon'}`
-                ]
-            })
-            const classes = classnames({props})
-            const activeClass =  computed (() =>{
-                return activeClassName || (activeStyle !== false ? `${prefixCls}-active` : undefined)
-            })
-            //methods
-            const handleClick = evt => {
-                ctx.emit('click', evt)
-            }
+<script lang="ts">
+import { computed, defineComponent, toRefs } from 'vue'
+import { PropType } from 'vue'
+import feedback from '../feedback/index'
 
-            return {
-                classes,
-                iconClass,
-                activeClass,
-                handleClick,
-            }
-        }
+type IButtonType = PropType<'primary' | 'ghost' | 'warning'>
+type IButtonSize = 'large' | 'small'
+export default defineComponent({
+  name: 'Button',
+  props: {
+    prefixCls: {
+      type: String,
+      default: 'am-button'
+    },
+    type: {
+      type: String as IButtonType,
+      default: 'primary',
+      validator: (val: string) => {
+        return ['primary', 'ghost', 'warning'].includes(val)
+      }
+    },
+    size: {
+      type: String as IButtonSize,
+      default: 'large',
+      validator: (val: string) => {
+        return ['large', 'small'].includes(val)
+      }
+    },
+    icon: {
+      type: String,
+      default: ''
+    },
+    loading: Boolean,
+    inline: Boolean,
+    disabled: Boolean
+  },
+  emits: ['click'],
+  directives: { feedback: feedback },
+  setup(props, ctx) {
+    const { prefixCls, activeClassName, activeStyle } = toRefs(props)
+    const iconClass = computed(() => {
+      return [`${prefixCls.value}-${'icon'}`]
     })
-    const classnames = ({ props }) => {
-        return {
-            [`${props.prefixCls}`]: true,
-            [`${props.prefixCls}-primary`]: props.type === 'primary',
-            [`${props.prefixCls}-ghost`]: props.type === 'ghost',
-            [`${props.prefixCls}-warning`]: props.type === 'warning',
-            [`${props.prefixCls}-small`]: props.size === 'small',
-            [`${props.prefixCls}-inline`]: props.inline,
-            [`${props.prefixCls}-disabled`]: props.disabled,
-            [`${props.prefixCls}-loading`]: props.loading,
-            [`${props.prefixCls}-icon`]: props.icon || props.loading
-        }
+    const classes = classnames({ props })
+    const activeClass = computed(() => {
+      return activeClassName || (activeStyle !== false ? `${prefixCls.value}-active` : undefined)
+    })
+    //methods
+    const handleClick = (evt) => {
+      ctx.emit('click', evt)
     }
+
+    return {
+      classes,
+      iconClass,
+      activeClass,
+      handleClick
+    }
+  }
+})
+const classnames = ({ props }) => {
+  return {
+    [`${props.prefixCls}`]: true,
+    [`${props.prefixCls}-primary`]: props.type === 'primary',
+    [`${props.prefixCls}-ghost`]: props.type === 'ghost',
+    [`${props.prefixCls}-warning`]: props.type === 'warning',
+    [`${props.prefixCls}-small`]: props.size === 'small',
+    [`${props.prefixCls}-inline`]: props.inline,
+    [`${props.prefixCls}-disabled`]: props.disabled,
+    [`${props.prefixCls}-loading`]: props.loading,
+    [`${props.prefixCls}-icon`]: props.icon || props.loading
+  }
+}
 </script>
