@@ -8,7 +8,7 @@
 <script lang="ts">
 import { computed, defineComponent, toRefs } from 'vue'
 import { PropType } from 'vue'
-import feedback from '../feedback/index'
+import feedback from '../feedback/index';
 
 type IButtonType = PropType<'primary' | 'ghost' | 'warning'>
 type IButtonSize = 'large' | 'small'

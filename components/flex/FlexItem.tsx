@@ -14,7 +14,7 @@ export default defineComponent({
       const wrapCls = [`${props.prefixCls}-item`]
       return (
           <div class={wrapCls}>
-            {slots.default()}
+            {slots.default}
           </div>
       )
     }
