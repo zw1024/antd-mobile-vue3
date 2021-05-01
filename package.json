@@ -38,8 +38,10 @@
     "vue-router": "^4.0.6",
     "vue-tsc": "^0.0.15"
   },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
     "*.{ts,tsx,js,vue,less}": [
