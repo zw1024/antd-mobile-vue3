@@ -1,0 +1,12 @@
+*.html
+*.txt
+*.md
+*.svg
+*.ttf
+*.woff
+*.eot
+.husky
+.git
+.vitepress
+package.json
+node_modules

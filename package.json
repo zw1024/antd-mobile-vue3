@@ -12,7 +12,8 @@
     "prepare": "husky install",
     "postinstall": "husky install",
     "prepublishOnly": "pinst --disable",
-    "postpublish": "pinst --enable"
+    "postpublish": "pinst --enable",
+    "test": "jest"
   },
   "dependencies": {},
   "devDependencies": {
@@ -44,10 +45,10 @@
       "pre-commit": "lint-staged"
     }
   },
+  "license": "MIT",
   "lint-staged": {
-    "*.{ts,tsx,js,vue,less}": [
-      "prettier --write",
-      "git add"
-    ]
+        "*.{ts,tsx,js,vue,less}": [
+          "prettier --write --ignore-unknown"
+        ]
   }
 }
