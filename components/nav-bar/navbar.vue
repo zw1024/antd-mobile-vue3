@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue';
-import { PropType } from 'vue'
+import { PropType } from 'vue';
 type NavBarMode = PropType<'dark' | 'light'>
 
 export default defineComponent({

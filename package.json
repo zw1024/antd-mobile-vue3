@@ -7,7 +7,8 @@
     "serve": "vite preview",
     "docs:dev": "vitepress dev components",
     "docs:build": "vitepress build components",
-    "docs:serve": "vitepress serve components"
+    "docs:serve": "vitepress serve components",
+    "prepare": "husky install"
   },
   "dependencies": {
   },
