@@ -1,6 +1,7 @@
 {
   "name": "antd-mobile-vue3",
   "version": "0.0.0",
+  "private": false,
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
@@ -8,7 +9,10 @@
     "docs:dev": "vitepress dev components",
     "docs:build": "vitepress build components",
     "docs:serve": "vitepress serve components",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "postinstall": "husky install",
+    "prepublishOnly": "pinst --disable",
+    "postpublish": "pinst --enable"
   },
   "dependencies": {},
   "devDependencies": {
@@ -33,6 +37,9 @@
     "vue": "^3.0.5",
     "vue-router": "^4.0.6",
     "vue-tsc": "^0.0.15"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
   },
   "lint-staged": {
     "*.{ts,tsx,js,vue,less}": [
