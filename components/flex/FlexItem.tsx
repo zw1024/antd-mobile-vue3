@@ -1,5 +1,4 @@
-
-import {defineComponent, h} from "vue";
+import { defineComponent, h } from 'vue'
 
 export default defineComponent({
   name: 'FlexItem',
@@ -9,14 +8,10 @@ export default defineComponent({
       default: 'am-flexbox'
     }
   },
-  setup(props, {slots}) {
+  setup(props, { slots }) {
     return () => {
       const wrapCls = [`${props.prefixCls}-item`]
-      return (
-          <div class={wrapCls}>
-            {slots.default}
-          </div>
-      )
+      return <div class={wrapCls}>{slots}</div>
     }
   }
 })

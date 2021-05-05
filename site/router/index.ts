@@ -30,6 +30,10 @@ export const routes: Array<RouteRecordRaw> = [
       {
         path: 'whitespace',
         component: () => import('../../components/whitespace/demo/index.vue')
+      },
+      {
+        path: 'navbar',
+        component: () => import('../../components/navbar/demo/index.vue')
       }
     ]
   }

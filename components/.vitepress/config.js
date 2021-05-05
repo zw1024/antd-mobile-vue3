@@ -6,10 +6,11 @@ module.exports = {
     search: true,
     sidebar: [
       { text: 'Buttom', link: '/button/README' },
-      { text: 'Icon', link: '/Icon/README' },
-      { text: 'Flex', link: '/Flex/README' },
+      { text: 'Icon', link: '/icon/README' },
+      { text: 'Flex', link: '/flex/README' },
       { text: 'WingBlank', link: '/wingblank/README' },
-      { text: 'WhiteSpace', link: '/whitespace/README' }
+      { text: 'WhiteSpace', link: '/whitespace/README' },
+      { text: 'NavBar', link: '/navbar/README' }
 
     ]
   }
