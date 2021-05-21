@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "target": "es6",
     "module": "esnext",
     "moduleResolution": "node",
     "strict": true,
@@ -12,10 +12,10 @@
     "types": ["vite/client"]
   },
   "include": [
-    "site/**/*.ts",
-    "site/**/*.d.ts",
-    "site/**/*.tsx",
-    "site/**/*.vue"
+    "**/*.ts",
+    "**/*.d.ts",
+    "**/*.tsx",
+    "**/*.vue"
   ],
   "exclude": [
     "node_modules"

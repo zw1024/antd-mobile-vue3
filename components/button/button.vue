@@ -8,10 +8,10 @@
 <script lang="ts">
 import { computed, defineComponent, toRefs } from 'vue'
 import { PropType } from 'vue'
-import feedback from '../feedback/index';
+import feedback from '../feedback/index'
 
 type IButtonType = PropType<'primary' | 'ghost' | 'warning'>
-type IButtonSize = 'large' | 'small'
+type IButtonSize = PropType<'large' | 'small'>
 export default defineComponent({
   name: 'Button',
   props: {
@@ -37,6 +37,16 @@ export default defineComponent({
       type: String,
       default: ''
     },
+    activeClassName: {
+      type: String,
+      default: ''
+    },
+    activeStyle: {
+      type: [Object, Boolean],
+      default: () => {
+        return {}
+      }
+    },
     loading: Boolean,
     inline: Boolean,
     disabled: Boolean
@@ -44,19 +54,30 @@ export default defineComponent({
   emits: ['click'],
   directives: { feedback: feedback },
   setup(props, ctx) {
-    const { prefixCls, activeClassName, activeStyle } = toRefs(props)
+    const { prefixCls, activeClassName, activeStyle, type, size, inline, disabled, loading, icon } = toRefs(props)
     const iconClass = computed(() => {
-      return [`${prefixCls.value}-${'icon'}`]
+      return [`${prefixCls.value}-icon`]
     })
-    const classes = classnames({ props })
+    const classes = computed(() => {
+      return {
+        [`${prefixCls.value}`]: true,
+        [`${prefixCls.value}-primary`]: type.value === 'primary',
+        [`${prefixCls.value}-ghost`]: type.value === 'ghost',
+        [`${prefixCls.value}-warning`]: type.value === 'warning',
+        [`${prefixCls.value}-small`]: size.value === 'small',
+        [`${prefixCls.value}-inline`]: inline.value,
+        [`${prefixCls.value}-disabled`]: disabled.value,
+        [`${prefixCls.value}-loading`]: loading.value,
+        [`${prefixCls.value}-icon`]: icon.value || loading.value
+      }
+    })
     const activeClass = computed(() => {
-      return activeClassName || (activeStyle !== false ? `${prefixCls.value}-active` : undefined)
+      return activeClassName.value || (activeStyle.value !== false ? `${prefixCls.value}-active` : undefined)
     })
     //methods
-    const handleClick = (evt) => {
+    const handleClick = (evt: Event) => {
       ctx.emit('click', evt)
     }
-
     return {
       classes,
       iconClass,
@@ -65,17 +86,4 @@ export default defineComponent({
     }
   }
 })
-const classnames = ({ props }) => {
-  return {
-    [`${props.prefixCls}`]: true,
-    [`${props.prefixCls}-primary`]: props.type === 'primary',
-    [`${props.prefixCls}-ghost`]: props.type === 'ghost',
-    [`${props.prefixCls}-warning`]: props.type === 'warning',
-    [`${props.prefixCls}-small`]: props.size === 'small',
-    [`${props.prefixCls}-inline`]: props.inline,
-    [`${props.prefixCls}-disabled`]: props.disabled,
-    [`${props.prefixCls}-loading`]: props.loading,
-    [`${props.prefixCls}-icon`]: props.icon || props.loading
-  }
-}
 </script>

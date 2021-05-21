@@ -34,6 +34,14 @@ export const routes: Array<RouteRecordRaw> = [
       {
         path: 'navbar',
         component: () => import('../../components/navbar/demo/index.vue')
+      },
+      {
+        path: 'popover',
+        component: () => import('../../components/popover/demo/index.vue')
+      },
+      {
+        path: 'tooltip',
+        component: () => import('../../components/tooltip/demo/index.vue')
       }
     ]
   }

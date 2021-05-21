@@ -7,6 +7,7 @@
     <div><router-link to="/wingblank">WingBlank</router-link></div>
     <div><router-link to="/whitespace">WhiteSpace</router-link></div>
     <div><router-link to="/navbar">NavBar</router-link></div>
+    <div><router-link to="/popover">Popover</router-link></div>
   </div>
 </template>
 
